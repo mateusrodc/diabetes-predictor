@@ -4,7 +4,7 @@ Este projeto aplica algoritmos de Machine Learning para prever a ocorrência de 
 
 ## 🌐 Acesse o app online
 
-🎯 [Clique aqui para usar o app interativo](https://mateusrodc-diabetes-predictor.streamlit.app)
+🎯 [Clique aqui para usar o app interativo](https://diabetespredictormachine.streamlit.app/)
 
 
 ## 📊 Dataset
