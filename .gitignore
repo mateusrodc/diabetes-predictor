@@ -1,0 +1,42 @@
+# Bytecode do Python
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Virtualenv
+venv/
+.venv/
+
+# Arquivos de configuração do VSCode
+.vscode/
+
+# Modelos e arquivos binários
+*.pkl
+*.joblib
+*.h5
+*.onnx
+
+# Dados temporários e cache
+*.log
+*.tmp
+*.csv
+*.tsv
+*.json
+*.xlsx
+*.sqlite
+*.db
+.DS_Store
+Thumbs.db
+
+# Cache do pip e outros
+pip-wheel-metadata/
+*.egg-info/
+*.eggs/
+dist/
+build/
+.cache/
+.pytest_cache/
+.ipynb_checkpoints/
+
+# Streamlit
+.streamlit/secrets.toml
