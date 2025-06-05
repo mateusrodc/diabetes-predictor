@@ -13,11 +13,20 @@ st.write("Preencha os dados clínicos abaixo para prever a probabilidade de diab
 model = joblib.load("src/model.pkl")
 scaler = joblib.load("src/scaler.pkl")
 
+sexo = st.radio("Sexo", ["Mulher", "Homem"], horizontal=True)
+
 # --- ENTRADAS DO USUÁRIO ---
 col1, col2 = st.columns(2)
 
+
+
 with col1:
-    pregnancies = st.number_input("Número de gestações", min_value=0, value=1)
+    
+    if sexo == "Mulher":
+        pregnancies = st.number_input("Número de gestações", min_value=0, value=1)
+    else:
+        pregnancies = 0
+
     glucose = st.number_input("Glicose", min_value=0, value=120)
     blood_pressure = st.number_input("Pressão Arterial", min_value=0, value=70)
     skin_thickness = st.number_input("Espessura da Pele", min_value=0, value=20)
