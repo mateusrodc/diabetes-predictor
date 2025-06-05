@@ -20,13 +20,14 @@ Este projeto aplica algoritmos de Machine Learning para prever a ocorrência de 
 
 | Modelo               | Acurácia |
 |----------------------|----------|
-| Logistic Regression  | 0.770    |
-| KNN                  | 0.757    |
-| Random Forest        | 0.783 ✅ |
+| Logistic Regression  | 0.740    |
+| KNN                  | 0.718    |
+| Random Forest        | 0.753 ✅ |
 
 ✅ O melhor modelo foi salvo como `model.pkl`.
 
 ## 📂 Estrutura
+
 diabetes-predictor/
 ├── data/ # Dataset CSV
 ├── notebooks/ # Análise e treino
@@ -41,25 +42,26 @@ diabetes-predictor/
 git clone https://github.com/mateusrodc/diabetes-predictor.git
 cd diabetes-predictor
 pip install -r requirements.txt
+jupyter notebook
 
+🛠️ Tecnologias
+Python 3
 
-## 🛠️ Tecnologias
+Pandas, NumPy
 
-- Python 3
+Scikit-learn
 
-- Pandas, NumPy
+Seaborn, Matplotlib
 
-- Scikit-learn
+Jupyter Notebook
 
-- Seaborn, Matplotlib
+Joblib
 
-- Jupyter Notebook
-
-- Joblib
-
-## 🤝 Autor
-
+🤝 Autor
 Mateus Rodrigues
-📧 [mateusrdcs@gmail.com]
-🔗 linkedin.com/mateusrodc
+📧 mateusrdcs@gmail.com
+🔗 linkedin.com/in/mateusrodc
 💻 github.com/mateusrodc
+
+
+---
