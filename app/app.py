@@ -1,6 +1,8 @@
 import streamlit as st
 import numpy as np
 import joblib
+import matplotlib.pyplot as plt
+
 
 # --- CONFIGURAÇÃO DA PÁGINA ---
 st.set_page_config(page_title="Previsão de Diabetes", page_icon="🧠", layout="centered")
@@ -22,10 +24,13 @@ col1, col2 = st.columns(2)
 
 with col1:
     
-    if sexo == "Mulher":
-        pregnancies = st.number_input("Número de gestações", min_value=0, value=1)
-    else:
-        pregnancies = 0
+    is_mulher = (sexo == "Mulher")
+    pregnancies = st.number_input(
+        "Número de gestações",
+        min_value=0,
+        value=1 if is_mulher else 0,
+        disabled=not is_mulher
+    )
 
     glucose = st.number_input("Glicose", min_value=0, value=120)
     blood_pressure = st.number_input("Pressão Arterial", min_value=0, value=70)
@@ -57,3 +62,18 @@ if st.button("🔍 Prever"):
 
     st.markdown("---")
     st.markdown("🔁 Você pode alterar os valores e clicar novamente para novas previsões.")
+
+
+    # --- GRÁFICO DE PROBABILIDADES ---
+    st.markdown("### 📊 Probabilidades do Modelo")
+    
+    classes = ['Sem Diabetes', 'Com Diabetes']
+    probs = model.predict_proba(input_scaled)[0]
+
+    fig, ax = plt.subplots()
+    ax.barh(classes, probs, height=0.5)
+    ax.set_xlim(0, 1)
+    ax.set_xlabel('Probabilidade')
+    ax.set_title('Distribuição das Probabilidades')
+    st.pyplot(fig)
+
