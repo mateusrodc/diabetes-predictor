@@ -2,6 +2,11 @@
 
 Este projeto aplica algoritmos de Machine Learning para prever a ocorrência de diabetes com base em dados clínicos. O modelo foi desenvolvido com Python, utilizando `pandas`, `scikit-learn`, `seaborn` e `matplotlib`.
 
+## 🌐 Acesse o app online
+
+🎯 [Clique aqui para usar o app interativo](https://mateusrodc-diabetes-predictor.streamlit.app)
+
+
 ## 📊 Dataset
 
 - Fonte: [Kaggle - Diabetes Dataset](https://www.kaggle.com/datasets/uciml/pima-indians-diabetes-database)
