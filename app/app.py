@@ -4,6 +4,8 @@ import numpy as np
 import joblib
 import matplotlib.pyplot as plt
 import pandas as pd
+from db_conn import get_session, Previsao
+
 
 # --- CONFIGURAÇÃO DA PÁGINA ---
 st.set_page_config(page_title="Previsão de Diabetes", page_icon="🧠", layout="centered")
@@ -114,11 +116,20 @@ if st.button("🔍 Prever"):
 
     # --- HISTÓRICO DE PREVISÕES (ESTATÍSTICAS) ---
     st.markdown("### 📊 Estatísticas do Histórico")
-    if st.session_state.history:
-        df_history = pd.DataFrame(st.session_state.history)
+    session = get_session()
+    registros = session.query(Previsao).all()
 
-        total = len(df_history)
-        com_diabetes = df_history[df_history["Resultado"] == "Com Diabetes"]
+    if registros:
+        df_db = pd.DataFrame([{
+            "Sexo": r.sexo,
+            "Idade": r.idade,
+            "IMC": r.imc,
+            "Probabilidade": r.probabilidade,
+            "Resultado": r.resultado
+        } for r in registros])
+
+        total = len(df_db)
+        com_diabetes = df_db[df_db["Resultado"] == "Com Diabetes"]
         perc_diabetes = (len(com_diabetes) / total) * 100
 
         st.markdown(f"- **Total de Previsões:** {total}")
@@ -126,8 +137,19 @@ if st.button("🔍 Prever"):
         st.markdown(f"- **Sem Diabetes:** {total - len(com_diabetes)} ({100 - perc_diabetes:.2f}%)")
 
         st.markdown("#### 📈 Médias dos Parâmetros Informados:")
-        stats = df_history.drop(columns=["Sexo", "Probabilidade (%)", "Resultado"]).astype(float).mean()
-        st.dataframe(stats.to_frame(name="Média"), use_container_width=True)
+        st.dataframe(df_db[["Idade", "IMC", "Probabilidade"]].mean().to_frame(name="Média"), use_container_width=True)
 
     else:
-        st.info("Nenhuma previsão realizada ainda.")
+        st.info("Nenhuma previsão salva no banco de dados ainda.")
+
+
+    session = get_session()
+    nova_previsao = Previsao(
+        sexo=sexo,
+        idade=age,
+        imc=bmi,
+        probabilidade=float(prob),
+        resultado="Com Diabetes" if prediction == 1 else "Sem Diabetes"
+    )
+    session.add(nova_previsao)
+    session.commit()
