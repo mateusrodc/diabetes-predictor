@@ -4,9 +4,6 @@ import numpy as np
 import joblib
 import matplotlib.pyplot as plt
 import pandas as pd
-from firebase_conn import get_firestore_client
-
-db = get_firestore_client()
 
 # --- CONFIGURAÇÃO DA PÁGINA ---
 st.set_page_config(page_title="Previsão de Diabetes", page_icon="🧠", layout="centered")
@@ -134,11 +131,3 @@ if st.button("🔍 Prever"):
 
     else:
         st.info("Nenhuma previsão realizada ainda.")
-
-    db.collection("previsoes").add({
-    "sexo": sexo,
-    "idade": age,
-    "imc": bmi,
-    "probabilidade": float(prob),
-    "resultado": "Com Diabetes" if prediction == 1 else "Sem Diabetes"
-})
