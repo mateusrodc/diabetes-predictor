@@ -48,7 +48,7 @@ git clone https://github.com/mateusrodc/diabetes-predictor.git
 cd diabetes-predictor
 pip install -r requirements.txt
 jupyter notebook
-
+```
 🛠️ Tecnologias
 Python 3
 
