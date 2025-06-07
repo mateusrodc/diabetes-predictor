@@ -49,20 +49,20 @@ cd diabetes-predictor
 pip install -r requirements.txt
 jupyter notebook
 ```
-🛠️ Tecnologias
-Python 3
+## 🛠️ Tecnologias
+- Python 3
 
-Pandas, NumPy
+- Pandas, NumPy
 
-Scikit-learn
+- Scikit-learn
 
-Seaborn, Matplotlib
+- Seaborn, Matplotlib
 
-Jupyter Notebook
+- Jupyter Notebook
 
-Joblib
+- Joblib
 
-🤝 Autor
+## 🤝 Autor
 Mateus Rodrigues
 📧 mateusrdcs@gmail.com
 🔗 linkedin.com/in/mateusrodc
